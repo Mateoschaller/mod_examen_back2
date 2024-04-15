@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const { MongoClient } = require('mongodb');
+const { MongoClient, ServerApiVersion } = require('mongodb');
 
 app.use(cors()); // Permite todas las solicitudes CORS
 
@@ -38,8 +38,7 @@ async function main() {
             }
         });
 
-        const PORT = 5000;
-        app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+        app.listen(5000, () => console.log(`Server running on http://localhost:5000`));
     } catch (e) {
         console.error(e);
         process.exit(1); // Salir del proceso con error
