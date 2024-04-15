@@ -11,13 +11,14 @@ const uri = "mongodb+srv://mateoschaller:Nce1fmSAilnwsPJq@cluster1.sj60qa8.mongo
 const client = new MongoClient(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    ssl: true,
-    sslValidate: true,
+    tls: true, // Esta opción habilita TLS, reemplazando 'ssl: true'
+    tlsAllowInvalidCertificates: false // Opcional: false por defecto, cambia a true si quieres permitir certificados inválidos
 });
 
 async function main() {
     try {
         await client.connect();
+        console.log("Conectado a MongoDB");
         const database = client.db('examen');
         const likesCollection = database.collection('likes');
 
