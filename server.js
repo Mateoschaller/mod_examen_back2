@@ -8,7 +8,12 @@ app.use(cors()); // Permite todas las solicitudes CORS
 app.use(express.json()); // Middleware para parsear JSON
 
 const uri = "mongodb+srv://mateoschaller:Nce1fmSAilnwsPJq@cluster1.sj60qa8.mongodb.net/?retryWrites=true&w=majority&appName=cluster1";
-const client = new MongoClient(uri);
+const client = new MongoClient(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    ssl: true,
+    sslValidate: true,
+});
 
 async function main() {
     try {
