@@ -6,9 +6,8 @@ const { MongoClient } = require('mongodb');
 app.use(cors()); // Permite todas las solicitudes CORS
 
 app.use(express.json()); // Middleware para parsear JSON
-require('dotenv').config();
 
-const uri = process.env.MONGO_URI;
+const uri = "mongodb+srv://mateoschaller:Nce1fmSAilnwsPJq@cluster1.sj60qa8.mongodb.net/?retryWrites=true&w=majority&appName=cluster1";
 const client = new MongoClient(uri);
 
 async function main() {
@@ -32,7 +31,7 @@ async function main() {
             }
         });
 
-        const PORT = process.env.PORT || 5000;
+        const PORT = 5000;
         app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
     } catch (e) {
         console.error(e);
