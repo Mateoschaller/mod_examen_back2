@@ -9,10 +9,11 @@ app.use(express.json()); // Middleware para parsear JSON
 
 const uri = "mongodb+srv://mateoschaller:Nce1fmSAilnwsPJq@cluster1.sj60qa8.mongodb.net/?retryWrites=true&w=majority&appName=cluster1";
 const client = new MongoClient(uri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    tls: true, // Esta opción habilita TLS, reemplazando 'ssl: true'
-    tlsAllowInvalidCertificates: false // Opcional: false por defecto, cambia a true si quieres permitir certificados inválidos
+    serverApi: {
+        version: ServerApiVersion.v1,
+        strict: true,
+        deprecationErrors: true,
+    }
 });
 
 async function main() {
